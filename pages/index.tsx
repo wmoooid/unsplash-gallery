@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import React from 'react';
 
-const transition_time = 300;
+const transition_time = 500;
 const card_mb = 125;
 const card_gap = 30;
 const card_width = 285;
@@ -13,17 +13,17 @@ const card_hold = {
   bottom: card_mb,
   left: card_center,
   borderRadius: '20px',
-  visivility: 'hidden',
 };
 const card_move = {
   width: '100%',
   height: '100%',
   bottom: 0,
   left: 0,
-  visivility: 'visible',
   borderRadius: '0px',
+  willChange: 'width, height, bottom, left, border-radius',
   transition: `all ${transition_time}ms ease-in-out`,
 };
+let shouldWait = false;
 
 const Home: NextPage = () => {
   const [list, setList] = React.useState([
@@ -35,15 +35,21 @@ const Home: NextPage = () => {
   ]);
   const [backgroundList, setBackgroundList] = React.useState([list[0], list[1]]);
   const [nextCardStyle, setNextCardStyle] = React.useState<any>(card_hold);
+  const [prevCardStyle, setPrevCardStyle] = React.useState('background-image');
 
   const handleClick = () => {
+    if (shouldWait) return;
+    shouldWait = true;
     setNextCardStyle(card_move);
+    setPrevCardStyle('background-image dark');
     const newList = [...list];
     newList.shift();
     setList(newList);
     setTimeout(() => {
       setBackgroundList([newList[0], newList[1]]);
       setNextCardStyle(card_hold);
+      setPrevCardStyle('background-image');
+      shouldWait = false;
     }, transition_time);
   };
 
@@ -58,7 +64,7 @@ const Home: NextPage = () => {
             }}
             src={backgroundList[0].src}
             alt=''
-            className='background-image'
+            className={prevCardStyle}
           />
           <img style={nextCardStyle} src={backgroundList[1].src} alt='' className='background-image' />
         </div>
