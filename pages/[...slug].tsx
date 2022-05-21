@@ -53,16 +53,11 @@ const Home: React.FC = () => {
     <main>
       <section className='container'>
         <div className='background'>
-          <img
-            style={{
-              width: '100%',
-              height: '100%',
-            }}
-            src={backgroundList[0]?.urls.regular}
-            alt=''
-            className={prevCardStyle}
+          <div style={{ backgroundImage: `url(${backgroundList[0]?.urls.regular})` }} className={prevCardStyle} />
+          <div
+            style={{ backgroundImage: `url(${backgroundList[1]?.urls.regular})`, ...nextCardStyle }}
+            className='background-image'
           />
-          <img style={nextCardStyle} src={backgroundList[1]?.urls.regular} alt='' className='background-image' />
         </div>
         <ul className='card-list'>
           {data.slice(1).map((el, i) => (
@@ -77,7 +72,7 @@ const Home: React.FC = () => {
               }}
               className='card-item'
               onClick={handleClick}>
-              <img className='card-image' src={el?.urls.regular} alt='' />
+              <div style={{ backgroundImage: `url(${el?.urls.regular})` }} className='card-image' />
             </li>
           ))}
         </ul>
