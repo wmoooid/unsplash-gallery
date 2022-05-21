@@ -21,12 +21,10 @@ function* getGallery({ payload }: GalleryAction) {
       process.env.NEXT_PUBLIC_CLIENT_ID
     }`,
   );
-  console.log(
-    `https://api.unsplash.com//search/photos?query=${payload.name}&page=1&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}`,
-  );
+
   if (response.ok) {
     const data: SearchResponseData = yield apply(response, response.json, []);
-    console.log(data);
+
     yield put({
       type: GET_GALLERY_SUCCESS,
       payload: {
