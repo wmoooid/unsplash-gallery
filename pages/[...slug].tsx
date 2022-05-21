@@ -54,6 +54,7 @@ const Home: React.FC = () => {
       <section className='container'>
         <div className='background'>
           <div style={{ backgroundImage: `url(${backgroundList[0]?.urls.regular})` }} className={prevCardStyle} />
+          <div style={{ backgroundImage: `url(${backgroundList[0]?.urls.full})` }} className={prevCardStyle} />
           <div
             style={{ backgroundImage: `url(${backgroundList[1]?.urls.regular})`, ...nextCardStyle }}
             className='background-image'
