@@ -32,7 +32,7 @@ interface TopicsResponse {
 function* getGallery({ payload }: GalleryAction) {
   const response: Response = yield call(
     fetch,
-    `https://api.unsplash.com/topics${payload.name}/photos?page=1&per_page=6&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}`,
+    `https://api.unsplash.com/topics${payload.name}/photos?page=1&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}`,
   );
 
   if (response.ok) {
