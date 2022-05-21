@@ -9,7 +9,7 @@ export const Background: React.FC = () => {
   return (
     <div className='background'>
       <div style={{ backgroundImage: `url(${gallery.prevImg?.urls?.regular})` }} className={gallery.prevImgStyle} />
-      <div style={{ backgroundImage: `url(${gallery.prevImg?.urls?.full})` }} className={gallery.prevImgStyle} />
+      {/* <div style={{ backgroundImage: `url(${gallery.prevImg?.urls?.full})` }} className={gallery.prevImgStyle} /> */}
       <div
         style={{ backgroundImage: `url(${gallery.nextImg?.urls?.regular})`, ...gallery.nextImgStyle }}
         className='background-image'

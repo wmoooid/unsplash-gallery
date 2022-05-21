@@ -29,6 +29,12 @@ export const GalleryList: React.FC = () => {
           className='card-item'
           onClick={handleClick}>
           <div style={{ backgroundImage: `url(${el?.urls.regular})` }} className='card-image' />
+          <div className='card-item-description'>
+            <div className='card-item-info'>
+              <p className='card-item-author'>{el?.user?.name}</p>
+              <h2 className='card-item-heading'>{el?.description}</h2>
+            </div>
+          </div>
         </li>
       ))}
     </ul>

@@ -1,5 +1,5 @@
 export const transition_time = 500;
-export const card_mb = 125;
+export const card_mb = 64;
 export const card_gap = 30;
 export const card_width = 285;
 export const card_height = 435;

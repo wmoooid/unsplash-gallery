@@ -1,5 +1,6 @@
 import { transition_time } from '@/src/constants';
 import { GalleryAction } from '@/types/actions';
+import { SearchResponseData } from '@/types/search';
 import { TopicsResponseData } from '@/types/topics';
 import { LocationChangeAction, LOCATION_CHANGE } from 'connected-next-router';
 import { apply, call, delay, fork, put, select, take, takeEvery, takeLeading } from 'redux-saga/effects';
@@ -16,16 +17,20 @@ import { selectGallery } from '../../reducers/gallery/selectors';
 function* getGallery({ payload }: GalleryAction) {
   const response: Response = yield call(
     fetch,
-    `https://api.unsplash.com/topics${payload.name}/photos?page=1&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}`,
+    `https://api.unsplash.com/search/photos?query=${payload.name.slice(1)}&page=1&client_id=${
+      process.env.NEXT_PUBLIC_CLIENT_ID
+    }`,
   );
-
+  console.log(
+    `https://api.unsplash.com//search/photos?query=${payload.name}&page=1&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}`,
+  );
   if (response.ok) {
-    const data: TopicsResponseData[] = yield apply(response, response.json, []);
-
+    const data: SearchResponseData = yield apply(response, response.json, []);
+    console.log(data);
     yield put({
       type: GET_GALLERY_SUCCESS,
       payload: {
-        data: data,
+        data: data.results,
       },
     });
   } else {
