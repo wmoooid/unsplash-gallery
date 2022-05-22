@@ -21,6 +21,7 @@ $card_height: 435px;
 
 .header-nav-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 32px;
 }
 
@@ -310,3 +311,9 @@ $card_height: 435px;
 //     transform: translateY(0);
 //   }
 // }
+
+@media (max-width: 960px) {
+  .photo-description-box {
+    display: none;
+  }
+}
