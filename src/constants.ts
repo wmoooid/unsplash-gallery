@@ -19,4 +19,5 @@ export const card_move = {
   borderRadius: '0px',
   willChange: 'width, height, bottom, left, border-radius',
   transition: `all ${transition_time}ms ease-in-out`,
+  zIndex: '2',
 };
