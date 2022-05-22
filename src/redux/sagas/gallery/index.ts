@@ -1,7 +1,6 @@
 import { transition_time } from '@/src/constants';
 import { GalleryAction } from '@/types/actions';
-import { SearchResponseData } from '@/types/search';
-import { TopicsResponseData } from '@/types/topics';
+import { SearchResponseData, SearchResponseDataResults } from '@/types/search';
 import { LocationChangeAction, LOCATION_CHANGE } from 'connected-next-router';
 import { apply, call, delay, fork, put, select, take, takeEvery, takeLeading } from 'redux-saga/effects';
 import {
@@ -13,6 +12,8 @@ import {
   SHIFT_GALLERY_SUCCESS,
 } from '../../reducers/gallery/actions';
 import { selectGallery } from '../../reducers/gallery/selectors';
+
+const withDescription = (item: SearchResponseDataResults) => item.description;
 
 function* getGallery({ payload }: GalleryAction) {
   const response: Response = yield call(
@@ -28,7 +29,7 @@ function* getGallery({ payload }: GalleryAction) {
     yield put({
       type: GET_GALLERY_SUCCESS,
       payload: {
-        data: data.results,
+        data: data.results.filter(withDescription),
       },
     });
   } else {
