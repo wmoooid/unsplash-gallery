@@ -18,6 +18,8 @@ export const initialGalleryState = {
   prevImg: {},
   nextImgStyle: card_hold,
   prevImgStyle: 'background-image',
+  descrStyle: 'photo-description-animation roll-in',
+  infoStyle: 'photo-description-info fade-in',
 };
 
 export function galleryReducer(state = initialGalleryState, action: GalleryAction) {
@@ -53,6 +55,8 @@ export function galleryReducer(state = initialGalleryState, action: GalleryActio
         ...state,
         nextImgStyle: card_move,
         prevImgStyle: 'background-image dark',
+        descrStyle: 'photo-description-animation',
+        infoStyle: 'photo-description-info',
       };
     }
 
@@ -70,6 +74,8 @@ export function galleryReducer(state = initialGalleryState, action: GalleryActio
         nextImg: action.payload.data[1],
         nextImgStyle: card_hold,
         prevImgStyle: 'background-image',
+        descrStyle: 'photo-description-animation roll-in',
+        infoStyle: 'photo-description-info fade-in',
       };
     }
 

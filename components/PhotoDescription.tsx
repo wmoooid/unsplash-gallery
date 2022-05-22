@@ -1,17 +1,21 @@
 import React from 'react';
 import { selectGallery } from '@/src/redux/reducers/gallery/selectors';
 import { GalleryAction } from '@/types/actions';
-import { useSelector, useDispatch } from 'react-redux';
-import { card_width, card_height, card_mb, card_center, card_gap } from '@/src/constants';
+import { useSelector } from 'react-redux';
 
 export const PhotoDescription: React.FC = () => {
   const gallery: GalleryAction['payload'] = useSelector(selectGallery);
 
   return (
     <div className='photo-description-box'>
-      <div className='photo-description-info'>
+      <div className={gallery.infoStyle}>
         <p className='photo-description-author'>{gallery.prevImg?.user?.name}</p>
-        <h1 className='photo-description-heading'>{gallery.prevImg?.description}</h1>
+        <div className={gallery.descrStyle}>
+          <div className='first-line' />
+          <div className='second-line' />
+          <div className='third-line' />
+          <h1 className='photo-description-heading'>{gallery.prevImg?.description}</h1>
+        </div>
         {gallery.prevImg?.user?.location ? (
           <div className='photo-description-location'>
             <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>

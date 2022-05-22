@@ -8,6 +8,8 @@ export interface GalleryAction {
     prevImg: TopicsResponseData;
     nextImgStyle: {};
     prevImgStyle: string;
+    descrStyle: string;
+    infoStyle: string;
   };
   type: string;
 }

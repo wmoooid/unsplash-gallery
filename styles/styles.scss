@@ -113,6 +113,13 @@ $card_height: 435px;
 .photo-description-info {
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 300ms ease-in;
+
+  &.fade-in {
+    opacity: 1;
+  }
 }
 
 .photo-description-heading {
@@ -143,6 +150,9 @@ $card_height: 435px;
   display: flex;
   align-items: center;
   gap: 12px;
+
+  position: relative;
+  z-index: 10;
 }
 
 .photo-description-location-text {
@@ -150,4 +160,59 @@ $card_height: 435px;
   font-size: 18px;
   font-weight: 600;
   color: white;
+}
+
+.photo-description-animation {
+  position: relative;
+
+  & > .first-line {
+    top: 0;
+    height: 96px;
+  }
+
+  & > .second-line {
+    top: 96px;
+    height: 96px;
+  }
+
+  & > .third-line {
+    top: 192px;
+    height: 96px;
+  }
+
+  &.roll-in > .first-line {
+    top: 0;
+    height: 0px;
+  }
+
+  &.roll-in > .second-line {
+    top: 96px;
+    height: 0px;
+  }
+
+  &.roll-in > .third-line {
+    top: 192px;
+    height: 0px;
+  }
+}
+
+.first-line,
+.second-line,
+.third-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: black;
+}
+
+.first-line {
+  transition: height 400ms ease-out;
+}
+
+.second-line {
+  transition: height 600ms ease-out;
+}
+
+.third-line {
+  transition: height 800ms ease-out;
 }
