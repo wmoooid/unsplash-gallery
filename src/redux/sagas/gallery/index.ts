@@ -110,12 +110,12 @@ export function* fulfillGalery() {
 
   const data: SearchResponseData = yield apply(response, response.json, []);
   const dataWithDescription = data.results.filter(withDescription);
-  newList = [...newList, ...dataWithDescription];
+  // newList = [...newList, ...dataWithDescription];
 
   yield put({
     type: FULFILL_GALLERY_SUCCESS,
     payload: {
-      data: newList,
+      data: dataWithDescription,
       page: state.page + 1,
     },
   });

@@ -95,7 +95,7 @@ export function galleryReducer(state = initialGalleryState, action: GalleryActio
     case FULFILL_GALLERY_SUCCESS: {
       return {
         ...state,
-        data: action.payload.data,
+        data: [...state.data, ...action.payload.data],
         page: action.payload.page,
       };
     }
