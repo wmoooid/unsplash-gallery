@@ -4,6 +4,49 @@ $card_gap: 30px;
 $card_width: 285px;
 $card_height: 435px;
 
+.header-container {
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 72px;
+
+  background: radial-gradient(50% 100% at 0% 0%, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.header-nav-list {
+  display: flex;
+  gap: 32px;
+}
+
+.header-nav-item {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.header-seacrh {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-search-input {
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  border-bottom: 1px solid #fff;
+  background: none;
+}
+
 .container {
   width: 100vw;
   height: 100vh;

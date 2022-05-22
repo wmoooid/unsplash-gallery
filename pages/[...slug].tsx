@@ -3,6 +3,7 @@ import Background from '@/components/Background';
 import GalleryList from '@/components/GalleryList';
 import PhotoDescription from '@/components/PhotoDescription';
 import Head from 'next/head';
+import Header from '@/components/Header';
 
 const Home: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
           rel='stylesheet'
         />
       </Head>
+      <Header />
       <main>
         <section className='container'>
           <Background />
