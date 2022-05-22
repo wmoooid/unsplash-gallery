@@ -9,6 +9,8 @@ import {
   SHIFT_GALLERY_RETURN,
   FULFILL_GALLERY,
   FULFILL_GALLERY_SUCCESS,
+  SET_LOADING_FADE,
+  SET_LOADING_NONE,
 } from './actions';
 
 export const initialGalleryState = {
@@ -23,6 +25,7 @@ export const initialGalleryState = {
   prevImgStyle: 'background-image',
   descrStyle: 'photo-description-animation roll-in',
   infoStyle: 'photo-description-info fade-in',
+  loadingStyle: 'loading now',
 };
 
 export function galleryReducer(state = initialGalleryState, action: GalleryAction) {
@@ -32,6 +35,7 @@ export function galleryReducer(state = initialGalleryState, action: GalleryActio
         ...state,
         name: action.payload.name,
         isLoading: true,
+        loadingStyle: 'loading now',
       };
     }
 
@@ -93,6 +97,20 @@ export function galleryReducer(state = initialGalleryState, action: GalleryActio
         ...state,
         data: action.payload.data,
         page: action.payload.page,
+      };
+    }
+
+    case SET_LOADING_FADE: {
+      return {
+        ...state,
+        loadingStyle: 'loading',
+      };
+    }
+
+    case SET_LOADING_NONE: {
+      return {
+        ...state,
+        loadingStyle: 'loading none',
       };
     }
 

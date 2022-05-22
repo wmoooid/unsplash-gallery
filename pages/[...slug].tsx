@@ -4,8 +4,14 @@ import GalleryList from '@/components/GalleryList';
 import PhotoDescription from '@/components/PhotoDescription';
 import Head from 'next/head';
 import Header from '@/components/Header';
+import { GalleryAction } from '@/types/actions';
+import { selectGallery } from '@/src/redux/reducers/gallery/selectors';
+import { useSelector } from 'react-redux';
 
 const Home: React.FC = () => {
+  const gallery: GalleryAction['payload'] = useSelector(selectGallery);
+  const [isLoading, setIsLoading] = React.useState(true);
+
   return (
     <>
       <Head>
@@ -22,6 +28,7 @@ const Home: React.FC = () => {
           <GalleryList />
         </section>
       </main>
+      <div className={gallery.loadingStyle} />
     </>
   );
 };

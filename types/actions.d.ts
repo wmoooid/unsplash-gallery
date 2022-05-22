@@ -11,6 +11,7 @@ export interface GalleryAction {
     prevImgStyle: string;
     descrStyle: string;
     infoStyle: string;
+    loadingStyle: string;
   };
   type: string;
 }

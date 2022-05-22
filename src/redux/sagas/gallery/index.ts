@@ -9,6 +9,8 @@ import {
   GET_GALLERY,
   GET_GALLERY_FAILURE,
   GET_GALLERY_SUCCESS,
+  SET_LOADING_FADE,
+  SET_LOADING_NONE,
   SHIFT_GALLERY,
   SHIFT_GALLERY_RETURN,
   SHIFT_GALLERY_SUCCESS,
@@ -33,6 +35,18 @@ function* getGallery({ payload }: GalleryAction) {
       payload: {
         data: data.results.filter(withDescription),
       },
+    });
+
+    yield delay(transition_time);
+
+    yield put({
+      type: SET_LOADING_FADE,
+    });
+
+    yield delay(transition_time);
+
+    yield put({
+      type: SET_LOADING_NONE,
     });
   } else {
     yield put({
