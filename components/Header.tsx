@@ -14,8 +14,8 @@ export const Header: React.FC = () => {
     <header className='header-container'>
       <nav className='header-nav'>
         <ul className='header-nav-list'>
-          {LINKS.map((item) => (
-            <li className='header-nav-item'>
+          {LINKS.map((item, index) => (
+            <li key={`${item}_${index}`} className='header-nav-item'>
               <Link href={item.href}>{item.name}</Link>
             </li>
           ))}

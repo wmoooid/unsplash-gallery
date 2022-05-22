@@ -7,10 +7,13 @@ import {
   SHIFT_GALLERY,
   SHIFT_GALLERY_SUCCESS,
   SHIFT_GALLERY_RETURN,
+  FULFILL_GALLERY,
+  FULFILL_GALLERY_SUCCESS,
 } from './actions';
 
 export const initialGalleryState = {
   name: '',
+  page: 1,
   isLoading: false,
   isError: false,
   data: [],
@@ -76,6 +79,20 @@ export function galleryReducer(state = initialGalleryState, action: GalleryActio
         prevImgStyle: 'background-image',
         descrStyle: 'photo-description-animation roll-in',
         infoStyle: 'photo-description-info fade-in',
+      };
+    }
+
+    case FULFILL_GALLERY: {
+      return {
+        ...state,
+      };
+    }
+
+    case FULFILL_GALLERY_SUCCESS: {
+      return {
+        ...state,
+        data: action.payload.data,
+        page: action.payload.page,
       };
     }
 

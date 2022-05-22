@@ -1,6 +1,7 @@
 export interface GalleryAction {
   payload: {
     name: string;
+    page: number;
     isLoading: boolean;
     isError: boolean;
     data: TopicsResponseData[];
